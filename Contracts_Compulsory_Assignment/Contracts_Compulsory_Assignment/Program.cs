@@ -26,23 +26,15 @@ namespace Contracts_Compulsory_Assignment
                 var num1 = Convert.ToInt32(enteredKey);
 
                 Console.WriteLine(IsPrime(num1) ? "It is prime" : "It is not prime");
+                Console.ReadKey();
             }
         }
-
-        //public static bool IsPrime()
-        //{
-        //    var number = 5;
-            
-            
-        //}
 
         public static bool IsPrime(int number)
         {
             Contract.Requires(number > 0);
             Contract.Ensures(Contract.Result<bool>() == Contract.ForAll(2, number, c => number % c != 0));
-
-            // var boundary = (int)Math.Floor(Math.Sqrt(number));
-
+             
             if (number == 1)
             {
                 return false;
@@ -51,7 +43,7 @@ namespace Contracts_Compulsory_Assignment
             {
                 return true;
             }
-            
+
             for (var i = 2; i < number; ++i)
             {
                 Contract.Assert(Contract.ForAll(2, i, c => number % c != 0));
